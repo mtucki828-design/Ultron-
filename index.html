@@ -297,6 +297,7 @@ function rememberUltron(text) {
     });
 
     saveUltronMemory(memory);
+    updateMemoryCount();
 
     addMessage(
         "ultron",
@@ -391,6 +392,33 @@ document.addEventListener("DOMContentLoaded", function () {
 });   
     
 
+/* ===== LICZNIK PAMIĘCI ULTRONA ===== */
+
+function updateMemoryCount() {
+    const memory = getUltronMemory();
+    const count = memory.length;
+
+    const elements = document.querySelectorAll("div, span, p");
+
+    elements.forEach(function(element) {
+
+        if (
+            element.children.length === 0 &&
+            (
+                element.textContent.trim() === "0 zapisów" ||
+                /^\d+ zapisów?$/.test(element.textContent.trim())
+            )
+        ) {
+            element.textContent =
+                count + (count === 1 ? " zapis" : " zapisów");
+        }
+
+    });
+}
+
+/* Aktualizuj licznik po uruchomieniu strony */
+setTimeout(updateMemoryCount, 500);    
+    
 </script>
 
 </body>
