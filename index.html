@@ -522,29 +522,46 @@ document.addEventListener("DOMContentLoaded", function() {
         if (!text) return;
         /* ===== TRYB DOBRANOC ===== */
 
-if (
-    text.toLowerCase() === "dobranoc" ||
-    text.toLowerCase() === "dobranoc ultron"
-) {
+        if (
 
-    addMessage("user", text);
+            text.toLowerCase() === "dobranoc" ||
 
-    const memory = getUltronMemory();
+            text.toLowerCase() === "dobranoc ultron"
 
-    addMessage(
-        "ultron",
-        "<strong>ULTRON:</strong><br>" +
-        "System przechodzi w tryb czuwania.<br><br>" +
-        "Dzisiejsza sesja zakończona.<br>" +
-        "🧠 Pamięć: " + memory.length +
-        (memory.length === 1 ? " zapis" : " zapisów") +
-        "<br>⚡ ULTRON CORE V0.3<br><br>" +
-        "Do jutra."
-    );
+        ) {
 
-    input.value = "";
-    return;
-}
+            addMessage("user", text);
+
+            const memory = getUltronMemory();
+
+            addMessage(
+
+                "ultron",
+
+                "<strong>ULTRON:</strong><br>" +
+
+                "System przechodzi w tryb czuwania.<br><br>" +
+
+                "Dzisiejsza sesja zakończona.<br>" +
+
+                "🧠 Pamięć: " + memory.length +
+
+                (memory.length === 1 ? " zapis" : " zapisów") +
+
+                "<br>⚡ ULTRON CORE V0.3<br><br>" +
+
+                "Do jutra."
+
+            );
+
+            input.value = "";
+
+            return;
+
+        }
+
+
+    
 
         /* USUWANIE */
         if (
