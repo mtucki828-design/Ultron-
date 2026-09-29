@@ -269,6 +269,128 @@ function moduleMessage(module) {
     );
 }
 
+/* ===== ULTRON MEMORY V0.2 ===== */
+
+const ULTRON_MEMORY_KEY = "ultron_memory_v02";
+
+function getUltronMemory() {
+    try {
+        return JSON.parse(localStorage.getItem(ULTRON_MEMORY_KEY)) || [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveUltronMemory(memory) {
+    localStorage.setItem(
+        ULTRON_MEMORY_KEY,
+        JSON.stringify(memory)
+    );
+}
+
+function rememberUltron(text) {
+    const memory = getUltronMemory();
+
+    memory.push({
+        text: text,
+        date: new Date().toLocaleString("pl-PL")
+    });
+
+    saveUltronMemory(memory);
+
+    addMessage(
+        "ultron",
+        "<strong>ULTRON:</strong><br>Zapamiętałem: " +
+        text
+    );
+}
+
+function showUltronMemory() {
+    const memory = getUltronMemory();
+
+    if (memory.length === 0) {
+        addMessage(
+            "ultron",
+            "<strong>🧠 PAMIĘĆ ULTRONA</strong><br><br>" +
+            "Moja pamięć jest jeszcze pusta."
+        );
+        return;
+    }
+
+    let html =
+        "<strong>🧠 PAMIĘĆ ULTRONA</strong><br><br>";
+
+    memory.forEach((item, index) => {
+        html +=
+            "<b>" + (index + 1) + ".</b> " +
+            item.text +
+            "<br><small>" +
+            item.date +
+            "</small><br><br>";
+    });
+
+    addMessage("ultron", html);
+}
+
+/* Przycisk PAMIĘĆ */
+function moduleMessage(module) {
+
+    if (
+        module === "Pamięć" ||
+        module === "🧠 Pamięć" ||
+        module.toLowerCase().includes("pamięć")
+    ) {
+        showUltronMemory();
+        return;
+    }
+
+    addMessage(
+        "ultron",
+        "<strong>ULTRON:</strong><br>" +
+        "Moduł " +
+        module +
+        " zostanie podłączony w kolejnej wersji."
+    );
+}
+
+/* Zapisywanie komendy „zapamiętaj:” */
+document.addEventListener("DOMContentLoaded", function () {
+
+    const input =
+        document.querySelector("input") ||
+        document.querySelector("textarea");
+
+    if (!input) return;
+
+    const originalSendMessage = window.sendMessage;
+
+    if (typeof originalSendMessage !== "function") return;
+
+    window.sendMessage = function () {
+
+        const text = input.value.trim();
+
+        if (
+            text.toLowerCase().startsWith("zapamiętaj:")
+        ) {
+
+            const memoryText =
+                text.substring(11).trim();
+
+            if (memoryText.length > 0) {
+                rememberUltron(memoryText);
+            }
+
+            input.value = "";
+            return;
+        }
+
+        originalSendMessage();
+    };
+
+});   
+    
+
 </script>
 
 </body>
