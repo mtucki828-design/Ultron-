@@ -179,7 +179,7 @@ footer {
     <button class="module" onclick="moduleMessage('Pamięć')">
         🧠
         <br>Pamięć
-        <small>0 zapisów</small>
+        <small id="memoryCount">0 zapisów</small>
     </button>
 
     <button class="module" onclick="moduleMessage('Projekty')">
@@ -419,6 +419,19 @@ function updateMemoryCount() {
 /* Aktualizuj licznik po uruchomieniu strony */
 setTimeout(updateMemoryCount, 500);    
     
+function updateMemoryCount() {
+    const memory = getUltronMemory();
+    const count = memory.length;
+
+    const counter = document.getElementById("memoryCount");
+
+    if (counter) {
+        counter.textContent =
+            count === 1
+                ? "1 zapis"
+                : count + " zapisów";
+    }
+}
 </script>
 
 </body>
