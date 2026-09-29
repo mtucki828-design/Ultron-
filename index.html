@@ -297,7 +297,10 @@ function rememberUltron(text) {
     });
 
     saveUltronMemory(memory);
-    updateMemoryCount();
+    document.getElementById("memoryCount").textContent =
+    memory.length === 1
+        ? "1 zapis"
+        : memory.length + " zapisów";
 
     addMessage(
         "ultron",
