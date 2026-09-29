@@ -357,8 +357,151 @@ function moduleMessage(module) {
     );
 }
 
-/* Zapisywanie komendy „zapamiętaj:” */
-document.addEventListener("DOMContentLoaded", function () {
+/* ===== INTELIGENTNA PAMIĘĆ ULTRONA V0.3 ===== */
+
+function cleanMemoryText(text) {
+    return text
+        .replace(/^zapamiętaj\s*[:,-]?\s*/i, "")
+        .replace(/^zapisz\s*[:,-]?\s*/i, "")
+        .replace(/^pamiętaj\s*[:,-]?\s*/i, "")
+        .replace(/^to jest ważne\s*[:,-]?\s*/i, "")
+        .trim();
+}
+
+
+/* ===== USUWANIE ZAPISU ===== */
+
+function deleteMemoryByTime(text) {
+
+    const match = text.match(
+        /usuń zapis(?: z godziny| z)?\s+(\d{1,2}:\d{2}(?::\d{2})?)/i
+    );
+
+    if (!match) {
+        return false;
+    }
+
+    const requestedTime = match[1];
+
+    let memory = getUltronMemory();
+
+    const oldLength = memory.length;
+
+    memory = memory.filter(function(item) {
+
+        const timeMatch =
+            item.date.match(/(\d{1,2}:\d{2}:\d{2})/);
+
+        if (!timeMatch) {
+            return true;
+        }
+
+        const itemTime = timeMatch[1];
+
+        if (requestedTime.length === 5) {
+            return itemTime.substring(0, 5) !== requestedTime;
+        }
+
+        return itemTime !== requestedTime;
+    });
+
+    if (memory.length === oldLength) {
+
+        addMessage(
+            "ultron",
+            "<strong>ULTRON:</strong><br>" +
+            "Nie znalazłem zapisu z godziny " +
+            requestedTime + "."
+        );
+
+        return true;
+    }
+
+    saveUltronMemory(memory);
+
+    const counter =
+        document.getElementById("memoryCount");
+
+    if (counter) {
+        counter.textContent =
+            memory.length === 1
+                ? "1 zapis"
+                : memory.length + " zapisów";
+    }
+
+    addMessage(
+        "ultron",
+        "<strong>ULTRON:</strong><br>" +
+        "Usunąłem zapis z godziny " +
+        requestedTime + "."
+    );
+
+    return true;
+}
+
+
+/* ===== INTELIGENTNE ZAPISYWANIE ===== */
+
+function processMemoryCommand(text) {
+
+    const lower = text.toLowerCase().trim();
+
+    const isMemoryCommand =
+        lower.startsWith("zapamiętaj") ||
+        lower.startsWith("zapisz") ||
+        lower.startsWith("pamiętaj") ||
+        lower.startsWith("to jest ważne");
+
+    if (!isMemoryCommand) {
+        return false;
+    }
+
+    const memoryText = cleanMemoryText(text);
+
+    if (!memoryText) {
+
+        addMessage(
+            "ultron",
+            "<strong>ULTRON:</strong><br>" +
+            "Co mam zapamiętać?"
+        );
+
+        return true;
+    }
+
+    const memory = getUltronMemory();
+
+    memory.push({
+        text: memoryText,
+        date: new Date().toLocaleString("pl-PL")
+    });
+
+    saveUltronMemory(memory);
+
+    const counter =
+        document.getElementById("memoryCount");
+
+    if (counter) {
+        counter.textContent =
+            memory.length === 1
+                ? "1 zapis"
+                : memory.length + " zapisów";
+    }
+
+    addMessage(
+        "ultron",
+        "<strong>ULTRON:</strong><br>" +
+        "Zapamiętałem: " +
+        memoryText
+    );
+
+    return true;
+}
+
+
+/* ===== OBSŁUGA POLECEŃ ===== */
+
+document.addEventListener("DOMContentLoaded", function() {
 
     const input =
         document.querySelector("input") ||
@@ -368,31 +511,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const originalSendMessage = window.sendMessage;
 
-    if (typeof originalSendMessage !== "function") return;
+    if (typeof originalSendMessage !== "function") {
+        return;
+    }
 
-    window.sendMessage = function () {
+    window.sendMessage = function() {
 
         const text = input.value.trim();
 
+        if (!text) return;
+
+        /* USUWANIE */
         if (
-            text.toLowerCase().startsWith("zapamiętaj:")
+            text.toLowerCase().startsWith("usuń zapis")
         ) {
 
-            const memoryText =
-                text.substring(11).trim();
+            addMessage("user", text);
 
-            if (memoryText.length > 0) {
-                rememberUltron(memoryText);
+            if (deleteMemoryByTime(text)) {
+                input.value = "";
+                return;
             }
+        }
+
+        /* ZAPISYWANIE */
+        if (processMemoryCommand(text)) {
+
+            addMessage("user", text);
 
             input.value = "";
             return;
         }
 
+        /* NORMALNA WIADOMOŚĆ */
         originalSendMessage();
+
     };
 
-});   
+}); 
     
 
 /* ===== LICZNIK PAMIĘCI ULTRONA ===== */
