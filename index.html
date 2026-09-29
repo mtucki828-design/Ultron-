@@ -520,34 +520,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const text = input.value.trim();
 
         if (!text) return;
-        /* ===== TRYB DOBRANOC ===== */
-
-        if (text.toLowerCase().startsWith("dobranoc")) {
-
-    addMessage("user", text);
-
-    const memory = getUltronMemory();
-
-    addMessage(
-        "ultron",
-        "<strong>ULTRON:</strong><br>" +
-        "System przechodzi w tryb czuwania.<br><br>" +
-        "Dzisiejsza sesja zakończona.<br>" +
-        "🧠 Pamięć: " + memory.length +
-        (memory.length === 1 ? " zapis" : " zapisów") +
-        "<br>⚡ ULTRON CORE V0.3<br><br>" +
-        "Do jutra."
-    );
-
-    input.value = "";
-
-    return;
-}
-
-        }
-
-
-    
 
         /* USUWANIE */
         if (
