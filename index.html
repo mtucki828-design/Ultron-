@@ -3,144 +3,308 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ULTRON</title>
+
+<title>ULTRON CORE</title>
 
 <style>
-* {
-    box-sizing: border-box;
+
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background: #050608;
-    color: #f5f5f5;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+body{
+    margin:0;
+    background:#050608;
+    color:#f5f5f5;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 }
 
-.app {
-    max-width: 700px;
-    margin: auto;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+.app{
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
 }
 
-header {
-    padding: 28px 20px 20px;
-    border-bottom: 1px solid #20242b;
+/* =========================
+   HEADER
+========================= */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    margin-bottom:15px;
+
+    background:#0c0f14;
+    border:1px solid #252b34;
+    border-radius:18px;
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: 6px;
+.logo{
+    font-size:30px;
+    font-weight:800;
+    letter-spacing:6px;
 }
 
-.status {
-    margin-top: 6px;
-    color: #7cff8a;
-    font-size: 13px;
+.system{
+    color:#6dff82;
+    font-size:13px;
 }
 
-main {
-    flex: 1;
-    padding: 20px;
+/* =========================
+   CORE STATUS
+========================= */
+
+.core{
+    background:#080b10;
+    border:1px solid #252b34;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:15px;
 }
 
-.welcome {
-    background: #0d1015;
-    border: 1px solid #252a32;
-    border-radius: 20px;
-    padding: 22px;
-    margin-bottom: 18px;
+.core-title{
+    font-size:18px;
+    font-weight:700;
+    margin-bottom:15px;
 }
 
-.welcome h1 {
-    margin: 0 0 8px;
-    font-size: 24px;
+.core-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
+    gap:10px;
 }
 
-.welcome p {
-    margin: 0;
-    color: #9299a5;
+.core-box{
+    background:#0d1117;
+    border:1px solid #202630;
+    border-radius:12px;
+    padding:12px;
 }
 
-.chat {
-    min-height: 300px;
-    background: #090b0f;
-    border: 1px solid #252a32;
-    border-radius: 20px;
-    padding: 16px;
-    margin-bottom: 15px;
+.core-label{
+    color:#727b88;
+    font-size:11px;
+    text-transform:uppercase;
+    margin-bottom:5px;
 }
 
-.message {
-    margin-bottom: 14px;
-    line-height: 1.5;
+.core-value{
+    font-size:14px;
+    font-weight:600;
+    overflow-wrap:anywhere;
 }
 
-.ultron {
-    color: #8ab4ff;
+/* =========================
+   MAIN GRID
+========================= */
+
+.layout{
+    display:grid;
+    grid-template-columns:
+        1.6fr 1fr;
+    gap:15px;
 }
 
-.user {
-    color: #ffffff;
+/* =========================
+   CHAT
+========================= */
+
+.panel{
+    background:#090c11;
+    border:1px solid #252b34;
+    border-radius:18px;
+    padding:15px;
 }
 
-.input-area {
-    display: flex;
-    gap: 8px;
+.panel-title{
+    font-weight:700;
+    margin-bottom:12px;
 }
 
-input {
-    flex: 1;
-    min-width: 0;
-    padding: 15px;
-    border-radius: 14px;
-    border: 1px solid #292f38;
-    background: #0d1015;
-    color: white;
-    font-size: 16px;
+.chat{
+    height:430px;
+    overflow-y:auto;
+    padding:5px;
 }
 
-button {
-    border: 0;
-    border-radius: 14px;
-    padding: 0 18px;
-    background: #ffffff;
-    color: #050608;
-    font-weight: 700;
+.message{
+    margin-bottom:15px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
 }
 
-.modules {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-top: 15px;
+.user{
+    color:#ffffff;
 }
 
-.module {
-    padding: 16px 8px;
-    text-align: center;
-    background: #0d1015;
-    border: 1px solid #252a32;
-    border-radius: 15px;
-    color: white;
+.ultron{
+    color:#8ab4ff;
 }
 
-.module small {
-    display: block;
-    color: #777f8c;
-    margin-top: 5px;
+/* =========================
+   INPUT
+========================= */
+
+.input-area{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
 }
 
-footer {
-    padding: 15px 20px 25px;
-    color: #5f6672;
-    text-align: center;
-    font-size: 12px;
+input{
+    flex:1;
+    min-width:0;
+
+    padding:14px;
+
+    border-radius:12px;
+    border:1px solid #292f38;
+
+    background:#0d1015;
+    color:white;
+
+    font-size:16px;
 }
+
+button{
+    border:0;
+    border-radius:12px;
+
+    background:white;
+    color:#050608;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.send{
+    padding:0 18px;
+}
+
+/* =========================
+   MODULES
+========================= */
+
+.modules{
+    display:grid;
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+}
+
+.module{
+    padding:16px;
+
+    background:#0d1117;
+    color:white;
+
+    border:1px solid #252b34;
+}
+
+.module:hover{
+    border-color:#56606e;
+}
+
+/* =========================
+   DATA
+========================= */
+
+.data-list{
+    max-height:300px;
+    overflow-y:auto;
+}
+
+.data-item{
+    padding:10px;
+    margin-bottom:8px;
+
+    background:#0d1117;
+    border:1px solid #202630;
+
+    border-radius:10px;
+}
+
+.data-date{
+    color:#68717d;
+    font-size:11px;
+    margin-top:4px;
+}
+
+/* =========================
+   ACTIVITY
+========================= */
+
+.activity{
+    margin-top:15px;
+
+    max-height:180px;
+    overflow-y:auto;
+}
+
+.activity-item{
+    font-size:12px;
+    color:#8d96a3;
+
+    padding:7px 0;
+
+    border-bottom:1px solid #171b21;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:750px){
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .core-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:480px){
+
+    .app{
+        padding:10px;
+    }
+
+    header{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .chat{
+        height:350px;
+    }
+
+    .input-area{
+        flex-direction:column;
+    }
+
+    .send{
+        min-height:48px;
+    }
+
+}
+
 </style>
 </head>
 
@@ -149,448 +313,1573 @@ footer {
 <div class="app">
 
 <header>
-    <div class="logo">ULTRON</div>
-    <div class="status">● SYSTEM ONLINE</div>
+
+<div>
+<div class="logo">ULTRON</div>
+<div class="system">
+● CORE ONLINE
+</div>
+</div>
+
+<div>
+V0.6
+</div>
+
 </header>
 
-<main>
 
-<div class="welcome">
-    <h1>Witaj.</h1>
-    <p>Jestem ULTRON. To moja pierwsza wersja.</p>
+<!-- =========================
+     CORE
+========================= -->
+
+<section class="core">
+
+<div class="core-title">
+⚡ ULTRON CORE
 </div>
 
-<div class="chat" id="chat">
+<div class="core-grid">
 
-    <div class="message ultron">
-        <strong>ULTRON:</strong><br>
-        System uruchomiony. Czekam na polecenie.
-    </div>
+<div class="core-box">
+<div class="core-label">
+INTENT
+</div>
+
+<div
+class="core-value"
+id="intent"
+>
+IDLE
+</div>
+</div>
+
+
+<div class="core-box">
+<div class="core-label">
+MODULE
+</div>
+
+<div
+class="core-value"
+id="module"
+>
+SYSTEM
+</div>
+</div>
+
+
+<div class="core-box">
+<div class="core-label">
+STATUS
+</div>
+
+<div
+class="core-value"
+id="coreStatus"
+>
+READY
+</div>
+</div>
+
+
+<div class="core-box">
+<div class="core-label">
+MEMORY
+</div>
+
+<div
+class="core-value"
+id="memoryCount"
+>
+0
+</div>
 
 </div>
+
+<div class="core-box">
+<div class="core-label">
+CONTEXT
+</div>
+
+<div
+class="core-value"
+id="contextValue"
+>
+BRAK
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="layout">
+
+
+<!-- =========================
+     CHAT
+========================= -->
+
+<section class="panel">
+
+<div class="panel-title">
+💬 ULTRON CHAT
+</div>
+
+<div
+class="chat"
+id="chat"
+>
+
+<div class="message ultron">
+
+<strong>ULTRON:</strong><br>
+
+System uruchomiony.<br>
+ULTRON CORE oczekuje na polecenie.
+
+</div>
+
+</div>
+
 
 <div class="input-area">
-    <input id="message" placeholder="Napisz do Ultrona..." />
-    <button onclick="sendMessage()">WYŚLIJ</button>
+
+<input
+id="message"
+placeholder="Powiedz coś ULTRONOWI..."
+autocomplete="off"
+>
+
+<button
+class="send"
+id="sendButton"
+>
+WYŚLIJ
+</button>
+
 </div>
+
+</section>
+
+
+<!-- =========================
+     MODULES
+========================= -->
+
+<section class="panel">
+
+<div class="panel-title">
+🧩 MODUŁY
+</div>
+
 
 <div class="modules">
 
-    <button class="module" onclick="moduleMessage('Pamięć')">
-        🧠
-        <br>Pamięć
-        <small id="memoryCount">0 zapisów</small>
-    </button>
+<button
+class="module"
+data-action="memory"
+>
+🧠 PAMIĘĆ
+</button>
 
-    <button class="module" onclick="moduleMessage('Projekty')">
-        📁
-        <br>Projekty
-        <small>0 projektów</small>
-    </button>
 
-    <button class="module" onclick="moduleMessage('Zadania')">
-        📋
-        <br>Zadania
-        <small>0 zadań</small>
-    </button>
+<button
+class="module"
+data-action="tasks"
+>
+📋 ZADANIA
+</button>
+
+
+<button
+class="module"
+data-action="projects"
+>
+📁 PROJEKTY
+</button>
+
+
+<button
+class="module"
+data-action="context"
+>
+🎯 KONTEKST
+</button>
+
+
+<button
+class="module"
+data-action="status"
+>
+⚡ STATUS CORE
+</button>
 
 </div>
 
-</main>
 
-<footer>
-    ULTRON CORE V0.1
-</footer>
+<div class="panel-title"
+style="margin-top:20px">
+📡 AKTYWNOŚĆ
+</div>
+
+<div
+class="activity"
+id="activity"
+></div>
+
+</section>
 
 </div>
+
+
+<!-- =========================
+     DATA VIEW
+========================= -->
+
+<section
+class="panel"
+style="margin-top:15px"
+>
+
+<div class="panel-title">
+🗃️ DANE ULTRONA
+</div>
+
+<div
+class="data-list"
+id="dataList"
+>
+
+Brak danych.
+
+</div>
+
+</section>
+
+</div>
+
 
 <script>
 
-function addMessage(type, text) {
+/* =====================================================
+   ULTRON CORE
+===================================================== */
 
-    const chat = document.getElementById("chat");
 
-    const message = document.createElement("div");
+/* =========================
+   STORAGE
+========================= */
 
-    message.className = "message " + type;
+const MEMORY_KEY =
+"ultron_core_memory";
 
-    message.innerHTML = text;
+const TASK_KEY =
+"ultron_core_tasks";
 
-    chat.appendChild(message);
+const PROJECT_KEY =
+"ultron_core_projects";
 
-    chat.scrollTop = chat.scrollHeight;
+const CONTEXT_KEY =
+"ultron_core_context";
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function $(id){
+
+    return document.getElementById(id);
+
 }
 
-function sendMessage() {
 
-    const input = document.getElementById("message");
+function escapeHTML(value){
 
-    const text = input.value.trim();
+    const div =
+        document.createElement("div");
 
-    if (!text) return;
+    div.textContent =
+        String(value);
 
-    addMessage("user", "<strong>TY:</strong><br>" + text);
+    return div.innerHTML;
 
-    input.value = "";
+}
 
-    setTimeout(() => {
+/* =====================================================
+   COMMAND NORMALIZATION
+   Polecenia działają z polskimi znakami i bez nich.
+===================================================== */
 
-        let response =
-        "Otrzymałem polecenie. Jestem jeszcze wersją V0.1, ale mój rdzeń będziemy teraz stopniowo rozbudowywać.";
+function normalizeCommand(text){
 
-        if (text.toLowerCase().includes("cześć") ||
-            text.toLowerCase().includes("hej")) {
+    return String(text)
+        .toLowerCase()
+        .trim()
+        .normalize("NFD")
+        .replace(/[\\u0300-\\u036f]/g, "");
 
-            response =
-            "Witaj. ULTRON jest online. Co dzisiaj budujemy?";
+}
+
+
+/* =========================
+   STORAGE READ
+========================= */
+
+function getData(key){
+
+    try{
+
+        const data =
+            JSON.parse(
+                localStorage.getItem(key)
+            );
+
+        if(Array.isArray(data))
+            return data;
+
+        /* MIGRACJA STAREJ PAMIĘCI V0.2/V0.4 */
+        if(key === MEMORY_KEY){
+
+            const oldKeys = [
+                "ultron_memory_v02",
+                "ultron_memory_v04"
+            ];
+
+            for(const oldKey of oldKeys){
+
+                const oldData =
+                    JSON.parse(
+                        localStorage.getItem(oldKey)
+                    );
+
+                if(Array.isArray(oldData) && oldData.length){
+
+                    localStorage.setItem(
+                        MEMORY_KEY,
+                        JSON.stringify(oldData)
+                    );
+
+                    return oldData;
+                }
+            }
         }
 
-        if (text.toLowerCase().includes("kim jesteś")) {
+        return [];
 
-            response =
-            "Jestem ULTRON — Twój przyszły osobisty system AI.";
-        }
+    }catch(error){
 
-        addMessage(
-            "ultron",
-            "<strong>ULTRON:</strong><br>" + response
+        return [];
+
+    }
+
+}
+
+
+/* =========================
+   STORAGE SAVE
+========================= */
+
+function saveData(key,data){
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =========================
+   ACTIVITY
+========================= */
+
+function activity(text){
+
+    const box =
+        $("activity");
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "activity-item";
+
+    const time =
+        new Date().toLocaleTimeString(
+            "pl-PL"
         );
 
-    }, 500);
+    item.textContent =
+        "[" + time + "] " + text;
+
+    box.prepend(item);
+
 }
 
-function moduleMessage(module) {
 
-    addMessage(
-        "ultron",
-        "<strong>ULTRON:</strong><br>" +
-        "Moduł " + module +
-        " zostanie podłączony w kolejnej wersji."
+/* =========================
+   CORE DISPLAY
+========================= */
+
+function setCore(
+    intent,
+    module,
+    status
+){
+
+    $("intent").textContent =
+        intent;
+
+    $("module").textContent =
+        module;
+
+    $("coreStatus").textContent =
+        status;
+
+    $("memoryCount").textContent =
+        getData(MEMORY_KEY).length;
+
+}
+
+
+/* =========================
+   CHAT MESSAGE
+========================= */
+
+function addMessage(
+    type,
+    text
+){
+
+    const chat =
+        $("chat");
+
+    const message =
+        document.createElement("div");
+
+    message.className =
+        "message " + type;
+
+    message.innerHTML =
+        text;
+
+    chat.appendChild(
+        message
     );
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
 }
 
-/* ===== ULTRON MEMORY V0.2 ===== */
 
-const ULTRON_MEMORY_KEY = "ultron_memory_v02";
+/* =====================================================
+   INTENT ENGINE
+===================================================== */
 
-function getUltronMemory() {
-    try {
-        return JSON.parse(localStorage.getItem(ULTRON_MEMORY_KEY)) || [];
-    } catch (e) {
-        return [];
+function detectIntent(text){
+
+    const lower =
+        normalizeCommand(text);
+
+
+    /* MEMORY SAVE */
+
+    if(
+        lower.startsWith("zapamietaj") ||
+        lower.startsWith("zapisz") ||
+        lower.startsWith("pamietaj") ||
+        lower.startsWith("to jest wazne") ||
+        lower.startsWith("nie zapomnij") ||
+        lower.startsWith("istotne")
+    ){
+
+        return "MEMORY_SAVE";
+
     }
+
+
+    /* MEMORY READ */
+
+    if(
+        lower === "pamiec" ||
+        lower === "pokaz pamiec" ||
+        lower === "co pamietasz"
+    ){
+
+        return "MEMORY_READ";
+
+    }
+
+
+    /* MEMORY DELETE */
+
+    if(
+        lower.startsWith("usun pamiec") ||
+        lower.startsWith("usun zapis")
+    ){
+
+        return "MEMORY_DELETE";
+
+    }
+
+
+    /* TASK CREATE
+       "dodaj zadanie X"
+       "utworz zadanie X"
+       "zadanie X"
+       "zadanie: X"
+       "task X"
+    */
+
+    if(
+        lower.startsWith("dodaj zadanie") ||
+        lower.startsWith("utworz zadanie") ||
+        lower.startsWith("zadanie") ||
+        lower.startsWith("task")
+    ){
+
+        return "TASK_CREATE";
+
+    }
+
+
+    /* TASK LIST */
+
+    if(
+        lower === "zadania" ||
+        lower === "pokaz zadania" ||
+        lower === "jakie mam zadania" ||
+        lower === "lista zadan" ||
+        lower === "moje zadania"
+    ){
+
+        return "TASK_LIST";
+
+    }
+
+
+    /* PROJECT CREATE */
+
+    if(
+        lower.startsWith("dodaj projekt") ||
+        lower.startsWith("utworz projekt") ||
+        lower.startsWith("projekt") ||
+        lower.startsWith("project")
+    ){
+
+        return "PROJECT_CREATE";
+
+    }
+
+
+    /* PROJECT LIST */
+
+    if(
+        lower === "projekty" ||
+        lower === "pokaz projekty" ||
+        lower === "jakie mam projekty" ||
+        lower === "lista projektow" ||
+        lower === "moje projekty"
+    ){
+
+        return "PROJECT_LIST";
+
+    }
+
+
+    /* CONTEXT SET */
+
+    if(
+        lower.startsWith("pracujemy teraz nad projektem") ||
+        lower.startsWith("pracujemy nad projektem") ||
+        lower.startsWith("aktualny projekt") ||
+        lower.startsWith("projekt teraz")
+    ){
+
+        return "CONTEXT_SET";
+
+    }
+
+
+    /* CONTEXT READ */
+
+    if(
+        lower === "nad czym teraz pracujemy" ||
+        lower === "jaki jest aktualny projekt" ||
+        lower === "jaki projekt teraz robimy" ||
+        lower === "kontekst" ||
+        lower === "aktualny kontekst"
+    ){
+
+        return "CONTEXT_READ";
+
+    }
+
+
+    return "CHAT";
+
 }
 
-function saveUltronMemory(memory) {
-    localStorage.setItem(
-        ULTRON_MEMORY_KEY,
-        JSON.stringify(memory)
-    );
-}
+/* =====================================================
+   MEMORY
+===================================================== */
 
-function rememberUltron(text) {
-    const memory = getUltronMemory();
+function saveMemory(text){
+
+    const memory =
+        getData(MEMORY_KEY);
 
     memory.push({
-        text: text,
-        date: new Date().toLocaleString("pl-PL")
+
+        text:text,
+
+        date:
+            new Date()
+            .toLocaleString("pl-PL")
+
     });
 
-    saveUltronMemory(memory);
-    document.getElementById("memoryCount").textContent =
-    memory.length === 1
-        ? "1 zapis"
-        : memory.length + " zapisów";
-
-    addMessage(
-        "ultron",
-        "<strong>ULTRON:</strong><br>Zapamiętałem: " +
-        text
+    saveData(
+        MEMORY_KEY,
+        memory
     );
+
+    $("memoryCount").textContent =
+        memory.length;
+
 }
 
-function showUltronMemory() {
-    const memory = getUltronMemory();
 
-    if (memory.length === 0) {
+/* =========================
+   MEMORY TEXT CLEANER
+========================= */
+
+function cleanMemoryText(text){
+
+    return text
+        .replace(/^(zapamietaj|zapisz|pamietaj)\\s*[:, -]?\\s*/i, "")
+        .replace(/^to jest wazne\\s*[:, -]?\\s*/i, "")
+        .replace(/^nie zapomnij\\s*(ze)?\\s*/i, "")
+        .replace(/^istotne\\s*[:, -]?\\s*/i, "")
+        .trim();
+
+}
+
+/* =========================
+   MEMORY READ
+========================= */
+
+function showMemory(){
+
+    const memory =
+        getData(MEMORY_KEY);
+
+
+    if(!memory.length){
+
         addMessage(
             "ultron",
-            "<strong>🧠 PAMIĘĆ ULTRONA</strong><br><br>" +
-            "Moja pamięć jest jeszcze pusta."
+            "<strong>ULTRON:</strong><br>" +
+            "Moja pamięć jest pusta."
         );
+
         return;
+
     }
+
 
     let html =
         "<strong>🧠 PAMIĘĆ ULTRONA</strong><br><br>";
 
-    memory.forEach((item, index) => {
-        html +=
-            "<b>" + (index + 1) + ".</b> " +
-            item.text +
-            "<br><small>" +
-            item.date +
-            "</small><br><br>";
-    });
 
-    addMessage("ultron", html);
+    memory.forEach(
+        (item,index)=>{
+
+            html +=
+                "<b>" +
+                (index+1) +
+                ".</b> " +
+                escapeHTML(
+                    item.text
+                ) +
+                "<br>" +
+                "<small>" +
+                escapeHTML(
+                    item.date
+                ) +
+                "</small>" +
+                "<br><br>";
+
+        }
+    );
+
+
+    addMessage(
+        "ultron",
+        html
+    );
+
 }
 
-/* Przycisk PAMIĘĆ */
-function moduleMessage(module) {
 
-    if (
-        module === "Pamięć" ||
-        module === "🧠 Pamięć" ||
-        module.toLowerCase().includes("pamięć")
-    ) {
-        showUltronMemory();
+/* =====================================================
+   CONTEXT
+===================================================== */
+
+function getContext(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(CONTEXT_KEY)
+        ) || {
+            project:"",
+            note:"",
+            date:""
+        };
+
+    }catch(error){
+
+        return {
+            project:"",
+            note:"",
+            date:""
+        };
+
+    }
+
+}
+
+function saveContext(context){
+
+    localStorage.setItem(
+        CONTEXT_KEY,
+        JSON.stringify(context)
+    );
+
+    updateContextDisplay();
+
+}
+
+function updateContextDisplay(){
+
+    const context = getContext();
+    const value = document.getElementById("contextValue");
+
+    if(!value)
+        return;
+
+    value.textContent =
+        context.project ||
+        context.note ||
+        "BRAK";
+
+}
+
+function setContextFromText(text){
+
+    const normalized =
+        normalizeCommand(text);
+
+    let match =
+        normalized.match(
+            /^pracujemy teraz nad projektem\\s*[:, -]?\\s*(.+)$/i
+        );
+
+    if(!match){
+        match = normalized.match(
+            /^pracujemy nad projektem\\s*[:, -]?\\s*(.+)$/i
+        );
+    }
+
+    if(!match){
+        match = normalized.match(
+            /^aktualny projekt\\s*[:, -]?\\s*(.+)$/i
+        );
+    }
+
+    if(!match){
+        match = normalized.match(
+            /^projekt teraz\\s*[:, -]?\\s*(.+)$/i
+        );
+    }
+
+    if(!match)
+        return false;
+
+    const project =
+        match[1].trim();
+
+    if(!project){
+
+        addMessage(
+            "ultron",
+            "<strong>ULTRON:</strong><br>" +
+            "Podaj nazwę projektu."
+        );
+
+        return true;
+    }
+
+    saveContext({
+        project:project,
+        note:"",
+        date:new Date().toLocaleString("pl-PL")
+    });
+
+    setCore(
+        "CONTEXT_SET",
+        "CONTEXT",
+        "ACTIVE"
+    );
+
+    addMessage(
+        "ultron",
+        "<strong>ULTRON:</strong><br>" +
+        "✓ Ustawiono aktualny projekt:<br>" +
+        escapeHTML(project)
+    );
+
+    activity(
+        "CONTEXT → PROJECT → " + project
+    );
+
+    return true;
+
+}
+
+function showContext(){
+
+    const context =
+        getContext();
+
+    setCore(
+        "CONTEXT_READ",
+        "CONTEXT",
+        "READY"
+    );
+
+    if(!context.project && !context.note){
+
+        addMessage(
+            "ultron",
+            "<strong>🎯 AKTUALNY KONTEKST</strong><br><br>" +
+            "Nie ustawiono jeszcze aktualnego projektu."
+        );
+
         return;
     }
 
+    let html =
+        "<strong>🎯 AKTUALNY KONTEKST</strong><br><br>";
+
+    if(context.project)
+        html +=
+            "Projekt: <b>" +
+            escapeHTML(context.project) +
+            "</b><br>";
+
+    if(context.note)
+        html +=
+            "Notatka: " +
+            escapeHTML(context.note) +
+            "<br>";
+
+    if(context.date)
+        html +=
+            "<small>Ustawiono: " +
+            escapeHTML(context.date) +
+            "</small>";
+
     addMessage(
         "ultron",
-        "<strong>ULTRON:</strong><br>" +
-        "Moduł " +
-        module +
-        " zostanie podłączony w kolejnej wersji."
+        html
     );
+
+    activity(
+        "CONTEXT → READ → OK"
+    );
+
 }
 
-/* ===== INTELIGENTNA PAMIĘĆ ULTRONA V0.3 ===== */
+/* =====================================================
+   TASKS
+===================================================== */
 
-function cleanMemoryText(text) {
-    return text
-        .replace(/^zapamiętaj\s*[:,-]?\s*/i, "")
-        .replace(/^zapisz\s*[:,-]?\s*/i, "")
-        .replace(/^pamiętaj\s*[:,-]?\s*/i, "")
-        .replace(/^to jest ważne\s*[:,-]?\s*/i, "")
+function createTask(text){
+
+    const tasks =
+        getData(TASK_KEY);
+
+    const clean =
+        text
+        .replace(/^(dodaj\\s+)?zadanie\\s*[:, -]?\\s*/i, "")
+        .replace(/^(utworz\\s+)?zadanie\\s*[:, -]?\\s*/i, "")
+        .replace(/^task\\s*[:, -]?\\s*/i, "")
         .trim();
-}
 
 
-/* ===== USUWANIE ZAPISU ===== */
-
-function deleteMemoryByTime(text) {
-
-    const match = text.match(
-        /usuń zapis(?: z godziny| z)?\s+(\d{1,2}:\d{2}(?::\d{2})?)/i
-    );
-
-    if (!match) {
-        return false;
-    }
-
-    const requestedTime = match[1];
-
-    let memory = getUltronMemory();
-
-    const oldLength = memory.length;
-
-    memory = memory.filter(function(item) {
-
-        const timeMatch =
-            item.date.match(/(\d{1,2}:\d{2}:\d{2})/);
-
-        if (!timeMatch) {
-            return true;
-        }
-
-        const itemTime = timeMatch[1];
-
-        if (requestedTime.length === 5) {
-            return itemTime.substring(0, 5) !== requestedTime;
-        }
-
-        return itemTime !== requestedTime;
-    });
-
-    if (memory.length === oldLength) {
+    if(!clean){
 
         addMessage(
             "ultron",
             "<strong>ULTRON:</strong><br>" +
-            "Nie znalazłem zapisu z godziny " +
-            requestedTime + "."
+            "Podaj treść zadania."
         );
 
-        return true;
+        return;
+
     }
 
-    saveUltronMemory(memory);
 
-    const counter =
-        document.getElementById("memoryCount");
+    tasks.push({
 
-    if (counter) {
-        counter.textContent =
-            memory.length === 1
-                ? "1 zapis"
-                : memory.length + " zapisów";
-    }
+        text:clean,
+
+        date:
+            new Date()
+            .toLocaleString("pl-PL"),
+
+        done:false
+
+    });
+
+
+    saveData(
+        TASK_KEY,
+        tasks
+    );
+
 
     addMessage(
         "ultron",
         "<strong>ULTRON:</strong><br>" +
-        "Usunąłem zapis z godziny " +
-        requestedTime + "."
+        "✓ Dodano zadanie:<br>" +
+        escapeHTML(clean)
     );
 
-    return true;
 }
 
 
-/* ===== INTELIGENTNE ZAPISYWANIE ===== */
+/* =========================
+   TASK LIST
+========================= */
 
-function processMemoryCommand(text) {
+function showTasks(){
 
-    const lower = text.toLowerCase().trim();
+    const tasks =
+        getData(TASK_KEY);
 
-    const isMemoryCommand =
-        lower.startsWith("zapamiętaj") ||
-        lower.startsWith("zapisz") ||
-        lower.startsWith("pamiętaj") ||
-        lower.startsWith("to jest ważne");
 
-    if (!isMemoryCommand) {
-        return false;
-    }
-
-    const memoryText = cleanMemoryText(text);
-
-    if (!memoryText) {
+    if(!tasks.length){
 
         addMessage(
             "ultron",
             "<strong>ULTRON:</strong><br>" +
-            "Co mam zapamiętać?"
+            "Nie masz jeszcze żadnych zadań."
         );
 
-        return true;
+        return;
+
     }
 
-    const memory = getUltronMemory();
 
-    memory.push({
-        text: memoryText,
-        date: new Date().toLocaleString("pl-PL")
+    let html =
+        "<strong>📋 ZADANIA</strong><br><br>";
+
+
+    tasks.forEach(
+        (task,index)=>{
+
+            html +=
+                "<b>" +
+                (index+1) +
+                ".</b> " +
+                escapeHTML(
+                    task.text
+                ) +
+                "<br><small>" +
+                escapeHTML(
+                    task.date
+                ) +
+                "</small><br><br>";
+
+        }
+    );
+
+
+    addMessage(
+        "ultron",
+        html
+    );
+
+}
+
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+function createProject(text){
+
+    const projects =
+        getData(PROJECT_KEY);
+
+
+    const clean =
+        text
+        .replace(/^(dodaj\\s+)?projekt\\s*[:, -]?\\s*/i, "")
+        .replace(/^(utworz\\s+)?projekt\\s*[:, -]?\\s*/i, "")
+        .replace(/^project\\s*[:, -]?\\s*/i, "")
+        .trim();
+
+
+    if(!clean){
+
+        addMessage(
+            "ultron",
+            "<strong>ULTRON:</strong><br>" +
+            "Podaj nazwę projektu."
+        );
+
+        return;
+
+    }
+
+
+    projects.push({
+
+        name:clean,
+
+        date:
+            new Date()
+            .toLocaleString("pl-PL")
+
     });
 
-    saveUltronMemory(memory);
 
-    const counter =
-        document.getElementById("memoryCount");
+    saveData(
+        PROJECT_KEY,
+        projects
+    );
 
-    if (counter) {
-        counter.textContent =
-            memory.length === 1
-                ? "1 zapis"
-                : memory.length + " zapisów";
-    }
 
     addMessage(
         "ultron",
         "<strong>ULTRON:</strong><br>" +
-        "Zapamiętałem: " +
-        memoryText
+        "✓ Utworzono projekt:<br>" +
+        escapeHTML(clean)
     );
 
-    return true;
 }
 
 
-/* ===== OBSŁUGA POLECEŃ ===== */
+/* =========================
+   PROJECT LIST
+========================= */
 
-document.addEventListener("DOMContentLoaded", function() {
+function showProjects(){
+
+    const projects =
+        getData(PROJECT_KEY);
+
+
+    if(!projects.length){
+
+        addMessage(
+            "ultron",
+            "<strong>ULTRON:</strong><br>" +
+            "Nie masz jeszcze żadnych projektów."
+        );
+
+        return;
+
+    }
+
+
+    let html =
+        "<strong>📁 PROJEKTY</strong><br><br>";
+
+
+    projects.forEach(
+        (project,index)=>{
+
+            html +=
+                "<b>" +
+                (index+1) +
+                ".</b> " +
+                escapeHTML(
+                    project.name
+                ) +
+                "<br><small>" +
+                escapeHTML(
+                    project.date
+                ) +
+                "</small><br><br>";
+
+        }
+    );
+
+
+    addMessage(
+        "ultron",
+        html
+    );
+
+}
+
+
+/* =====================================================
+   CHAT
+===================================================== */
+
+function normalChat(text){
+
+    const lower =
+        normalizeCommand(text);
+
+
+    if(
+        lower.includes("hej") ||
+        lower.includes("cześć") ||
+        lower.includes("czesc")
+    ){
+
+        return (
+            "Witaj. ULTRON CORE jest online. " +
+            "Czekam na polecenie."
+        );
+
+    }
+
+
+    if(
+        lower.includes("kim jesteś") ||
+        lower.includes("kim jestes")
+    ){
+
+        return (
+            "Jestem ULTRON. " +
+            "Obecnie działam jako lokalny prototyp CORE."
+        );
+
+    }
+
+
+    if(
+        lower.includes("status")
+    ){
+
+        return (
+            "ULTRON CORE: ONLINE<br>" +
+            "Pamięć: " +
+            getData(MEMORY_KEY).length +
+            "<br>" +
+            "Zadania: " +
+            getData(TASK_KEY).length +
+            "<br>" +
+            "Projekty: " +
+            getData(PROJECT_KEY).length
+        );
+
+    }
+
+
+    return (
+        "Otrzymałem polecenie. " +
+        "CORE nie ma jeszcze podłączonego modelu AI."
+    );
+
+}
+
+
+/* =====================================================
+   MAIN CORE
+===================================================== */
+
+function executeCommand(text){
+
+    const intent =
+        detectIntent(text);
+
+
+    setCore(
+        intent,
+        "ANALYZING",
+        "PROCESSING"
+    );
+
+
+    activity(
+        "INPUT → " +
+        intent
+    );
+
+
+    switch(intent){
+
+
+        case "MEMORY_SAVE":
+
+            setCore(
+                intent,
+                "MEMORY",
+                "SAVING"
+            );
+
+            saveMemory(
+                cleanMemoryText(text)
+            );
+
+            addMessage(
+                "ultron",
+                "<strong>ULTRON:</strong><br>" +
+                "✓ Zapamiętałem:<br>" +
+                escapeHTML(
+                    cleanMemoryText(text)
+                )
+            );
+
+            activity(
+                "MEMORY → SAVE → OK"
+            );
+
+            break;
+
+
+        case "MEMORY_READ":
+
+            setCore(
+                intent,
+                "MEMORY",
+                "READING"
+            );
+
+            showMemory();
+
+            activity(
+                "MEMORY → READ → OK"
+            );
+
+            break;
+
+
+        case "TASK_CREATE":
+
+            setCore(
+                intent,
+                "TASKS",
+                "CREATING"
+            );
+
+            createTask(text);
+
+            activity(
+                "TASKS → CREATE → OK"
+            );
+
+            break;
+
+
+        case "TASK_LIST":
+
+            setCore(
+                intent,
+                "TASKS",
+                "READING"
+            );
+
+            showTasks();
+
+            activity(
+                "TASKS → READ → OK"
+            );
+
+            break;
+
+
+        case "PROJECT_CREATE":
+
+            setCore(
+                intent,
+                "PROJECTS",
+                "CREATING"
+            );
+
+            createProject(text);
+
+            activity(
+                "PROJECTS → CREATE → OK"
+            );
+
+            break;
+
+
+        case "PROJECT_LIST":
+
+            setCore(
+                intent,
+                "PROJECTS",
+                "READING"
+            );
+
+            showProjects();
+
+            activity(
+                "PROJECTS → READ → OK"
+            );
+
+            break;
+
+
+        case "CONTEXT_SET":
+
+            setCore(
+                intent,
+                "CONTEXT",
+                "SETTING"
+            );
+
+            setContextFromText(text);
+
+            break;
+
+
+        case "CONTEXT_READ":
+
+            showContext();
+
+            break;
+
+
+        default:
+
+            setCore(
+                "CHAT",
+                "CONVERSATION",
+                "ONLINE"
+            );
+
+            setTimeout(
+
+                ()=>{
+
+                    addMessage(
+                        "ultron",
+                        "<strong>ULTRON:</strong><br>" +
+                        normalChat(text)
+                    );
+
+                },
+
+                250
+
+            );
+
+            activity(
+                "CHAT → RESPONSE"
+            );
+
+    }
+
+}
+
+
+/* =====================================================
+   SEND
+===================================================== */
+
+function sendMessage(){
 
     const input =
-        document.querySelector("input") ||
-        document.querySelector("textarea");
+        $("message");
 
-    if (!input) return;
+    const text =
+        input.value.trim();
 
-    const originalSendMessage = window.sendMessage;
 
-    if (typeof originalSendMessage !== "function") {
+    if(!text)
         return;
+
+
+    addMessage(
+        "user",
+        "<strong>TY:</strong><br>" +
+        escapeHTML(text)
+    );
+
+
+    input.value = "";
+
+
+    executeCommand(text);
+
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+$("sendButton")
+.addEventListener(
+    "click",
+    sendMessage
+);
+
+
+/* =====================================================
+   ENTER
+===================================================== */
+
+$("message")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter" ||
+            event.code === "NumpadEnter"
+        ){
+
+            event.preventDefault();
+
+            sendMessage();
+
+        }
+
     }
+);
 
-    window.sendMessage = function() {
 
-        const text = input.value.trim();
+/* =====================================================
+   MODULE BUTTONS
+===================================================== */
 
-        if (!text) return;
+document
+.querySelectorAll(".module")
+.forEach(
+    button=>{
 
-        /* USUWANIE */
-        if (
-            text.toLowerCase().startsWith("usuń zapis")
-        ) {
+        button.addEventListener(
+            "click",
+            ()=>{
 
-            addMessage("user", text);
+                const action =
+                    button.dataset.action;
 
-            if (deleteMemoryByTime(text)) {
-                input.value = "";
-                return;
+
+                if(action==="memory"){
+
+                    setCore(
+                        "MEMORY_READ",
+                        "MEMORY",
+                        "READY"
+                    );
+
+                    showMemory();
+
+                }
+
+
+                if(action==="tasks"){
+
+                    setCore(
+                        "TASK_LIST",
+                        "TASKS",
+                        "READY"
+                    );
+
+                    showTasks();
+
+                }
+
+
+                if(action==="projects"){
+
+                    setCore(
+                        "PROJECT_LIST",
+                        "PROJECTS",
+                        "READY"
+                    );
+
+                    showProjects();
+
+                }
+
+
+                if(action==="context"){
+
+                    showContext();
+
+                }
+
+
+                if(action==="status"){
+
+                    setCore(
+                        "SYSTEM_STATUS",
+                        "CORE",
+                        "ONLINE"
+                    );
+
+
+                    addMessage(
+                        "ultron",
+                        "<strong>ULTRON CORE</strong><br><br>" +
+
+                        "SYSTEM: ONLINE<br>" +
+
+                        "MEMORY: " +
+                        getData(
+                            MEMORY_KEY
+                        ).length +
+                        "<br>" +
+
+                        "TASKS: " +
+                        getData(
+                            TASK_KEY
+                        ).length +
+                        "<br>" +
+
+                        "PROJECTS: " +
+                        getData(
+                            PROJECT_KEY
+                        ).length
+                    );
+
+                }
+
             }
-        }
+        );
 
-        /* ZAPISYWANIE */
-        if (processMemoryCommand(text)) {
-
-            addMessage("user", text);
-
-            input.value = "";
-            return;
-        }
-
-        /* NORMALNA WIADOMOŚĆ */
-        originalSendMessage();
-
-    };
-
-}); 
-    
-
-/* ===== LICZNIK PAMIĘCI ULTRONA ===== */
-
-function updateMemoryCount() {
-    const memory = getUltronMemory();
-    const count = memory.length;
-
-    const elements = document.querySelectorAll("div, span, p");
-
-    elements.forEach(function(element) {
-
-        if (
-            element.children.length === 0 &&
-            (
-                element.textContent.trim() === "0 zapisów" ||
-                /^\d+ zapisów?$/.test(element.textContent.trim())
-            )
-        ) {
-            element.textContent =
-                count + (count === 1 ? " zapis" : " zapisów");
-        }
-
-    });
-}
-
-/* Aktualizuj licznik po uruchomieniu strony */
-setTimeout(updateMemoryCount, 500);    
-    
-function updateMemoryCount() {
-    const memory = getUltronMemory();
-    const count = memory.length;
-
-    const counter = document.getElementById("memoryCount");
-
-    if (counter) {
-        counter.textContent =
-            count === 1
-                ? "1 zapis"
-                : count + " zapisów";
     }
-}
+);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+$("memoryCount")
+.textContent =
+    getData(
+        MEMORY_KEY
+    ).length;
+
+updateContextDisplay();
+
+
+activity(
+    "ULTRON CORE → SYSTEM ONLINE"
+);
+
+
 </script>
 
 </body>
